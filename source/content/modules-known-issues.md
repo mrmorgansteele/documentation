@@ -149,7 +149,15 @@ ___
 **Issue:** Uploads using the "Media Entity DropzoneJS" widget do not reliably work on Pantheon. The widget relies on a temporary path that is not shared between application containers. Refer to [this issue](https://www.drupal.org/project/dropzonejs/issues/2916330) for more information.
 
 ___
-
+## [Drush package 'drush-gdpr-dumper'](https://github.com/druidfi/drush-gdpr-dumper)
+<ReviewDate date="2024-10-18" />  
+  
+**Issue:** The druidfi/drush-gdpr-dumper breaks `drush-sql-dump` command. It results with following error `The '--column-statistics' option does not exist.`  
+  This package ships it's own `mysqldump` file being used to do the MySQL dump, which is incompatible with the platform. Specifically, the package overrides the `extra-dump` configuration, which is passed to mysqldump and does not allow it's alteration. The mysqldump used is not compatible with MariaDB.  
+  
+**Solution**: Remove the file `mysqldump` or uninstall the package. Then platform's version of `mysqldump` will be used.  
+  
+Notes: The package likely has other MariaDB incompatibilities!
 ___
 
 ## [Dynamic Entity Reference](https://www.drupal.org/project/dynamic_entity_reference/issues/2930423)
